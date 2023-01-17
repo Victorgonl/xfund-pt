@@ -64,9 +64,9 @@ _URL = "https://github.com/doc-analysis/XFUND/releases/download/v1.0"
 class XFund(datasets.GeneratorBasedBuilder):
     """XFund dataset."""
 
-    BUILDER_CONFIGS = [
-        datasets.BuilderConfig(name=f"{lang}", version=datasets.Version("1.0.0"), description=f"XFUND {lang} dataset") for lang in _LANG
-    ]
+    """ BUILDER_CONFIGS = [
+        datasets.BuilderConfig(name=f"{lang}", version=datasets.Version("1.0.0")) for lang in _LANG
+    ] """
 
     def _info(self):
         return datasets.DatasetInfo(
@@ -91,7 +91,8 @@ class XFund(datasets.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         """Returns SplitGenerators."""
-        lang = self.config.name
+        #lang = self.config.name
+        lang="pt"
         fileinfos = dl_manager.download_and_extract({
             "train_image": f"{_URL}/{lang}.train.zip",
             "train_annotation": f"{_URL}/{lang}.train.json",
